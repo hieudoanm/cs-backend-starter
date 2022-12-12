@@ -1,0 +1,19 @@
+version: '3.9'
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  cs-postgres:
+    restart: unless-stopped
+    image: postgres:latest
+    container_name: cs-postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: csuser
+      POSTGRES_PASSWORD: cspass
