@@ -17,3 +17,12 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: csuser
       POSTGRES_PASSWORD: cspass
+
+  cs-redis:
+    restart: unless-stopped
+    image: redis:latest
+    container_name: cs-redis
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
